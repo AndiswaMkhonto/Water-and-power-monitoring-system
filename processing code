@@ -1,0 +1,46 @@
+import processing.serial.*; 
+ 
+int btn1x=100; int btn1y=200; int btn1w=70; int btn1h=30; ////////////// int btn2x=100; int btn2y=240; int btn2w=70; int btn2h=30; 
+
+ 
+////////////// int btn3x=100; int btn3y=280; int btn3w=70; int btn3h=30; 
+ 
+int btn4x=100; int btn4y=330; int btn4w=80; int btn4h=30; 
+ 
+int btn5x=300; int btn5y=200; int btn5w=70; int btn5h=30; 
+ 
+int btn6x=300; int btn6y=240; int btn6w=70; int btn6h=30; 
+ 
+int btn7x=300; int btn7y=280; int btn7w=90; int btn7h=30; 
+ 
+
+ 
+ 
+int scrx=5; int scry=5; boolean bt1=false; boolean x1; boolean x2; boolean x3; boolean x4; boolean x5; boolean x6; boolean x7; 
+ 
+int num=0; int num2=0; int num3=0; int num4=0; int num5=0; int num6=0; int num7=0; 
+ 
+Serial myPort; Serial port; String val; String val1; 
+ 
+void setup(){ 
+
+ 
+  printArray(Serial.list());   String portName=Serial.list()[0]; 
+ 
+  myPort=new Serial(this, portName, 9600);          size(400,500);   x1=false;   x2=false;   x3=false;   x4=false;   x5=false;   x6=false;   x7=false; } 
+ 
+void draw(){   background(170);   fill(100);   rect(scrx,scry,390,90);   textSize(15);   fill(255);   if(myPort.available()>0)   {     val=myPort.readStringUntil('\n');   } 
+
+ 
+     if(val!=null){ 
+ 
+    text(val, scrx+130, scry+70);        }      text("Water at ",scrx+10,scry+30);   text("Power KWH at",scrx+10,scry+70);         rect(btn1x,btn1y,btn1w,btn1h);   rect(btn2x,btn2y,btn2w,btn2h);   rect(btn3x,btn3y,btn3w,btn3h);   rect(btn4x,btn4y,btn4w,btn4h);      /////////////////**//     rect(btn5x,btn5y,btn5w,btn5h);     rect(btn6x,btn6y,btn6w,btn6h);     rect(btn7x,btn7y,btn7w,btn7h);   //rect(btn8x,btn8y,btn8w,btn8h);   /////////////////**//   ///****************   if( overBtn())   {   fill(25,0,0); 
+
+ 
+  rect(btn1x,btn1y,btn1w,btn1h);   }   else{     fill(100);     rect(btn1x,btn1y,btn1w,btn1h);   }      if( overBtn2())   {   fill(25,0,0);   rect(btn2x,btn2y,btn2w,btn2h);   }   else{     fill(100);     rect(btn2x,btn2y,btn2w,btn2h);   }      if( overBtn3())   {   fill(25,0,0);   rect(btn3x,btn3y,btn3w,btn3h);   }   else{     fill(100);     rect(btn3x,btn3y,btn3w,btn3h);   } 
+
+ 
+    /////////////////     if( overBtn4())   {   fill(25,0,0);   rect(btn4x,btn4y,btn4w,btn4h);   }   else{     fill(100);     rect(btn4x,btn4y,btn4w,btn4h);   }            if( overBtn5())   {   fill(25,0,0);   rect(btn5x,btn5y,btn5w,btn5h);   }   else{     fill(100);     rect(btn5x,btn5y,btn5w,btn5h);   }            if( overBtn6())   {   fill(25,0,0); 
+
+ 
+  rect(btn6x,btn6y,btn6w,btn6h);   }   else{     fill(100);     rect(btn6x,btn6y,btn6w,btn6h);   }            if( overBtn7())   {   fill(25,0,0);   rect(btn7x,btn7y,btn7w,btn7h);   }   else{     fill(100);     rect(btn7x,btn7y,btn7w,btn7h);   }   
