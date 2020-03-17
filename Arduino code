@@ -50,3 +50,48 @@ int maximumRange =25; long duration, distance;
  
  
 /*  * HC-SR04 Ping distance sensor  
+
+ int Vpin=A0;  float voltage;  float volts;  char control;  int value=10;  float units=0.0;  char price;  char water;  char use; 
+ 
+void setup() {   // put your setup code here, to run once:   Serial.begin(9600);   lcd.begin(16,2);   lcd.setCursor(12,0);   pinMode(trigpin,OUTPUT);   pinMode(echopin,INPUT);   pinMode(4,OUTPUT);   pinMode(10,OUTPUT);   pinMode(7,OUTPUT);   pinMode(motor,OUTPUT); 
+
+ 
+  pinMode(light,OUTPUT);   digitalWrite(10,HIGH);   digitalWrite(7,HIGH);      units=100;   water='0';   use='0';   price='0';   control='0';   } 
+ 
+void loop() {   // put your main code here, to run repeatedly if(Serial.available()>0){   water=Serial.read();   } 
+ 
+  if(Serial.available()>0){      use=Serial.read();   } 
+ 
+  if(Serial.available()>0){      price=Serial.read();   }    
+
+ 
+  //price=30;   if(Serial.available()>0){      control=Serial.read();   }    
+ 
+  //FOR WATER CONTROL ///////////POWER CONTROL////////// 
+ 
+switch(price){   case 'e':       units=units+30.0;       break;          case 'f':       units=units+50.0;       break;         case'g':         units=units+100.0;       break;           default:         units=units;        break;   } 
+
+ 
+ 
+       ///////////*************///////   switch(control){     case '1':     if(units>0)     {         digitalWrite(motor,LOW);         digitalWrite(light,HIGH);         delay(1000);         units-=1.5;         lcd.setCursor(0,1);         lcd.print("Power KWH:");         lcd.print(units);         lcd.clear();     }     break;          case '2':     if(units>0)     {         digitalWrite(motor,HIGH);         digitalWrite(light,LOW);         delay(1300);         units-=0.6;         lcd.setCursor(0,1); 
+
+ 
+        lcd.print("Power KWH:");         lcd.print(units);         lcd.clear();     }     break; 
+ 
+    case '0':     if(units>0){         digitalWrite(motor,LOW);         digitalWrite(light,LOW);         delay(800);         units-=1.9;         lcd.setCursor(0,1);         lcd.print("Power KWH:");         lcd.print(units);         lcd.clear();     }     break; 
+ 
+    default:         digitalWrite(motor,HIGH);         digitalWrite(light,HIGH);         units=units;         lcd.setCursor(0,1);         lcd.print("Power KWH:");         lcd.print(units); 
+
+ 
+        lcd.clear();   }      if(units<=0)     {         units=0;         digitalWrite(motor,HIGH);         digitalWrite(light,HIGH);         lcd.setCursor(0,1);         lcd.print("Power KWH:");         lcd.print(units);         lcd.clear();     }      ////////////POWER CONTROL//////////      digitalWrite(trigpin, LOW);   delayMicroseconds(2*38);   digitalWrite(trigpin, HIGH);   delayMicroseconds(10*38);   duration=pulseIn(echopin,HIGH);   distance= duration/58.2;   delay(10); /////////////WATER CONTROL////////       if(use=='d'){          digitalWrite(10,LOW); 
+
+ 
+         digitalWrite(7,HIGH);          lcd.setCursor(0,0);          lcd.clear();        }        else if(distance>3&&distance==11){              digitalWrite(10,HIGH);              digitalWrite(7,HIGH);              lcd.setCursor(1,0);              lcd.print("water at 0%");              Serial.print("water at 0%");              lcd.clear();              }                   switch(water){       case 'a':             if( distance>3 && value==10){                 digitalWrite(10,HIGH);                 digitalWrite(7,LOW);                 lcd.setCursor(0,0);                 lcd.print("Loading Water");                 lcd.clear();             }               else if(distance==3 && value==10){                     digitalWrite(10,HIGH);                     digitalWrite(7,HIGH);                     lcd.setCursor(0,0); 
+
+ 
+                    lcd.print("water at 100%");                     Serial.print("water at 100%");                     lcd.clear();                    }           break; 
+ 
+      case 'b':             if( distance>5&&value==10){                 digitalWrite(10,HIGH);                 digitalWrite(7,LOW);                 lcd.setCursor(0,0);                 lcd.print("pump on");                 lcd.clear();             }               else if(distance==5 && value==10){                   digitalWrite(10,HIGH);                   digitalWrite(7,HIGH);                   lcd.setCursor(0,0);                   lcd.print("Water at 60%");                   Serial.print("Water at 60%");                   lcd.clear();               }           break;              case 'c':           if( distance>7&&value==10){ 
+
+ 
+              digitalWrite(10,HIGH);               digitalWrite(7,LOW);               lcd.setCursor(0,0);               lcd.print("pump on");               lcd.clear();         }           else if(distance==7 && value==10){                 digitalWrite(10,HIGH);                 digitalWrite(7,HIGH);                 lcd.setCursor(0,0);                 lcd.print("water at 30%");                 Serial.print("water at 30%");                 lcd.clear();           }       break;       default:       break;     }            /////////////WATER CONTROL/////////////// Serial.println(units); } 
