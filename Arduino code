@@ -1,0 +1,52 @@
+  if(x1){          num++;     println(num);     myPort.write('a'); 
+
+ 
+    //x1=false;   }      if(x2){     num2++;     println(num2);     myPort.write('b');     //x2=false;   }         if(x3){     num3++;     println(num3);     myPort.write('c');     //x3=false;   }         if(x4){     num4++;     println(num4);     myPort.write('d');     //x4=false;   }    
+
+ 
+     if(x5){     num5++;     println(num5);     myPort.write('e');    delay(1000);    x5=false;   }         if(x6){     num6++;     println(num6);     myPort.write('f');     //delay(5);     //x6=false;   }         if(x7){     num7++;     println(num7);     myPort.write(num7);     if(num7>=2){       num7-=4;     } 
+
+ 
+    x7=false;   }      fill(255);   text("full",btn1x+5,btn1y+20);   text("half",btn2x+5,btn2y+20);   text("quarter",btn3x+5,btn3y+20);   text("use",btn4x+22,btn4y+20);   text("R30.00",btn5x+10,btn5y+20);   text("R50.00",btn6x+10,btn6y+20);   text("P.apps",btn7x+10,btn7y+20);      loop();    } 
+ 
+void mousePressed(){      if(overBtn()){     x1=true;   }   else{x1=false;}      if(overBtn2()){     x2=true;   } 
+
+ 
+  else{x2=false;}      if(overBtn3()){     x3=true;   }   else{x3=false;}         if(overBtn4()){     x4=true;   }   else{x4=false;}         if(overBtn5()){     x5=true;   }   else{x5=false;}         if(overBtn6()){     x6=true;   }   else{x6=false;}       
+
+ 
+     if(overBtn7()){     x7=true;   }   else{x7=false;}    } 
+ 
+ 
+boolean overBtn(){ if(mouseX >= btn1x && mouseX<=btn1x+btn1w && mouseY>=btn1y && mouseY<=btn1y+btn1h){     return true;   }   else   {return false;} } 
+ 
+boolean overBtn2(){ if(mouseX >= btn2x && mouseX<=btn2x+btn2w && mouseY>=btn2y && mouseY<=btn2y+btn2h){     return true;   }   else   {return false;} } 
+
+ 
+ 
+boolean overBtn3(){ if(mouseX >= btn3x && mouseX<=btn3x+btn3w && mouseY>=btn3y && mouseY<=btn3y+btn3h){     return true;   }   else   {return false;} }      /////////////   boolean overBtn4(){ if(mouseX >= btn4x && mouseX<=btn4x+btn4w && mouseY>=btn4y && mouseY<=btn4y+btn4h){     return true;   }   else   {return false;} } 
+ 
+ 
+ boolean overBtn5(){ if(mouseX >= btn5x && mouseX<=btn5x+btn5w && mouseY>=btn5y && mouseY<=btn5y+btn5h){     return true;   } 
+
+ 
+  else   {return false;} } 
+ 
+ 
+ boolean overBtn6(){ if(mouseX >= btn6x && mouseX<=btn6x+btn6w && mouseY>=btn6y && mouseY<=btn6y+btn6h){     return true;   }   else   {return false;} } 
+ 
+ 
+ boolean overBtn7(){ if(mouseX >= btn7x && mouseX<=btn7x+btn7w && mouseY>=btn7y && mouseY<=btn7y+btn7h){     return true;   }   else   {return false;} } 
+ 
+ 
+ 
+
+ 
+#include <SoftwareSerial.h> #include <LiquidCrystal.h> #include <Wire.h> 
+ 
+LiquidCrystal lcd(12,11,5,4,3,2); #define echopin 9 //echo pin #define trigpin 8 //trigger pin #define motor 13 #define light 6 
+ 
+int maximumRange =25; long duration, distance; 
+ 
+ 
+/*  * HC-SR04 Ping distance sensor  
