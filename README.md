@@ -1,0 +1,18 @@
+# Water-and-power-monitoring-system
+This is a system I created which monitors the power and water usage in households and alerts them. I used Arduino hardware and Processing for the user interface.
+What will be achieved with this project is the monitoring of water and power usage and reducing of theft by the community members. The system will consist of a water level sensor module which will be detecting the water level at a time and measuring the distance between the water level and sensor and using that data to calculate the water usage. in other words it will be monitoring the tank and if is full it will stop the water from going inside. When the main tank is full and there are households who need their home tanks filled then the main tank will start pouring water to the small tanks and the water inside the main tank will be decreasing and in that way the water supply is being monitored. This system is designed to measure and monitor the water and power usage of the 
+
+ community members. I will have a processing graphical user interface that will be linked to Arduino and it will allow the users to buy the amount of water they need at that time and the same will apply for power. 
+ 
+ PROJECT DESCRIPTION  This is a system that monitors the water and power usage in communities. It is designed to help the country’s economy and to benefit everyone who is a citizen of the country. This system uses a water pump to fill the tank with water and then supplies that water to the households that need the water at that time. For power I will use an Arduino and connect a light bulb and a generator and users on processing will be able to buy electricity and the appliances that I will connect are to make users aware which appliance uses more power so they can try to eliminate the use of that appliance to save.. This system is a big need in the community to avoid load shedding because if power is saved then there will not be load shedding and if water is used carefully and responsibly then there will not be water shortages in communities or the country. The country’s economy will not be bankrupt, and farmers’ crops will not die, meaning we will always have enough supply of food. If we want to still be having power and water in the coming years, then this system is a need because it will ensure that power and water are saved and not misused. The target audience for this system is mainly those communities that usually have water shortages and power outages every now and then, this system is designed to address that.  Any party or organization that feels it can greatly benefit from this system they are more than welcome to buy. This project is intended to guide water and power usage in communities. The main thrust is on the setting up or strengthening of water and power monitoring systems for the purposes of human consumption and industrial uses. The main features of the systems are the water pumping process, water level detection and power monitoring process.   
+PROJECT TECHNOLOGY  • Water pump  
+It has a small DC motor. The DC motor is contained in a sealed case attached to the impeller and powers it                             through a simple gear drive through a series of pushes, the rotor continues to spin, driving the impeller and powering the pump.  
+ 
+• Ultrasonic sensor 
+ Is a device that can measure the distance to an object by using sound waves. 
+ It measures the distance by sending out a sound wave at a specific frequency and  
+ Listening for that sound wave to bounce back. 
+ 
+ Relay 
+ 
+A relay is an electrically operated switch. Many relays use an electromagnet to mechanically operate a switch, but other operating principles are also used, such as solid-state relays
